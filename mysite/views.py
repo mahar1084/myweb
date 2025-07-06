@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 # Impor model User
-from django.contrib.auth.models import User # Tambahkan ini
+from django.contrib.auth.models import User 
 
 from artikel.models import Kategori, Artikel
 
 # Impor untuk Django REST Framework
-from rest_framework import generics, permissions # Tambahkan ini
-from mysite.serializers import UserProfileSerializer # Impor Serializer yang sudah Anda buat
+from rest_framework import generics, permissions 
+from mysite.serializers import UserProfileSerializer 
 
 
 def about_me(request):
@@ -34,7 +34,7 @@ def detail_artikel(request, id):
     try:
         artikel = Artikel.objects.get(id=id)
     except Artikel.DoesNotExist:
-        return redirect('artikel_tidak_ditemukan') # Gunakan nama URL 'artikel_tidak_ditemukan'
+        return redirect('artikel_tidak_ditemukan') 
 
     artikel_lainnya = Artikel.objects.all().exclude(id=id)
 

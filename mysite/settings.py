@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     # ==============================================================
     # imagekit
     # ==============================================================
-    'imagekit', 
+    'imagekit',
     # ==============================================================
 ]
 
@@ -105,16 +105,24 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# Database (default: production - MySQL)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'artikel_blog',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',    # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'NAME': 'shrainm10$default',
+        'USER': 'shrainm10',
+        'PASSWORD': 'swifties1084',
+        'HOST': 'shrainm10.mysql.pythonanywhere-services.com',
+        'PORT': '',
     }
 }
+
+# Override jika di lokal
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -150,15 +158,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ← tempat collectstatic akan kumpulkan file
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# (Optional) Jika kamu butuh akses file static dari development folder, aktifkan ini:
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # ← ini untuk development, bukan untuk production
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+# Media files (uploadan user seperti gambar, file dll)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

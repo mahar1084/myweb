@@ -53,8 +53,6 @@ urlpatterns = [
 
     ########################## API URL Patterns ##################
     # =====================================================================
-    # PENTING: HAPUS AWALAN 'api/' DARI SEMUA PATH API DI SINI!
-    # =====================================================================
     # API Kategori
     path('kategori/', KategoriListCreateAPIView.as_view(), name='api_kategori_list_create'),
     path('kategori/<int:pk>/', KategoriRetrieveUpdateDestroyAPIView.as_view(), name='api_kategori_detail'),

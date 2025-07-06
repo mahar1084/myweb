@@ -38,7 +38,7 @@ class Artikel(models.Model):
                                format='JPEG', # Format output
                                options={'quality': 80}) # Kualitas JPEG
 
-    # Anda bisa membuat spec lain jika perlu, misalnya gambar berukuran sedang untuk tampilan detail
+    # bisa membuat spec lain jika perlu, misalnya gambar berukuran sedang untuk tampilan detail
     gambar_sedang = ImageSpecField(source='gambar',
                                    processors=[ResizeToFill(600, 400)],
                                    format='JPEG',

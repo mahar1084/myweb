@@ -96,14 +96,7 @@
     const commentsListDiv = document.getElementById('comments-list');
     const commentForm = document.getElementById('comment-form');
     const commentContentInput = document.getElementById('comment-content');
-    const artikelIdInput = document.getElementById('artikel-id');
-    const artikelId = artikelIdInput ? artikelIdInput.value : null;
-
-    if (!artikelId) {
-      console.error('ID artikel tidak ditemukan di template.');
-      commentsListDiv.innerHTML = '<p>Kesalahan: Tidak dapat memuat komentar tanpa ID artikel.</p>';
-      return;
-    }
+    const artikelId = "{{ artikel.id }}";  // <-- FIX: Selalu ada walau user belum login
 
     async function fetchComments() {
       try {
@@ -165,7 +158,7 @@
       });
     }
 
-    fetchComments();
+    fetchComments();  // ← ini tetap jalan meskipun user belum login
   });
 </script>
-{% endblock content %}
+{% endblock %}

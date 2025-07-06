@@ -32,7 +32,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 
 # Create your views here.
 def in_operator(user):
-    get_user = user.groups.filter(name='Operator').count()
+    get_user = user.groups.filter(name='operator').count()
     if get_user == 0:
         return False
     else:
@@ -188,11 +188,11 @@ def admin_artikel_tambah(request):
             pub.created_by = request.user
             pub.save()
             messages.success(request, 'berhasil tambah artikel')
-            print("Artikel berhasil disimpan di database!") 
+            print("Artikel berhasil disimpan di database!")
             return redirect(admin_artikel_list)
         else:
-            print("Form tidak valid saat tambah artikel:") 
-            print(forms.errors) 
+            print("Form tidak valid saat tambah artikel:")
+            print(forms.errors)
     forms = ArtikelForms()
     context = {
         "forms":forms
